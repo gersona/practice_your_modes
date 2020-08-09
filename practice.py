@@ -26,9 +26,14 @@ def major_scale(key):
 def major_mode(key, mode_val):
     # scales are 1-indexed, python is 0-indexed
     mode_val = mode_val - 1 
-    key_idx = keys.index(key)
-    scale = major_scale(key)
-    return scale[mode_val:] + scale[:mode_val]
+    if mode_val == 0:
+        root  = key
+    else:
+        key_idx = keys.index(key)
+        root_idx = int(key_idx + (sum(major_scale_tones[:mode_val])) * 2)
+        root = keys[root_idx]
+    tones = major_scale_tones[mode_val:] + major_scale_tones[:mode_val]
+    return get_scale(tones, root)
 
 
 if __name__ == "__main__":
