@@ -79,6 +79,11 @@ if __name__ == "__main__":
         key = random.choice(keys)
 
     mode = major_mode(key, mode_value)
-    print(f"KEY {key}: play major {mode_name} mode (start @ {mode_value})")
-    input("Press enter to get correct answer...")
-    print(" - ".join(mode))
+    print(f"Major {mode_name} mode of {key} (start @ {mode_value})")
+    answer = input("Type the keys (separated by a blank)")
+    answer = answer.split(' ')
+    if mode == answer:
+        print("CORRECT!")
+    else:
+        print("Correct answer is")
+        print(" - ".join(mode))
